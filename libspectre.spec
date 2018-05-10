@@ -4,7 +4,7 @@
 #
 Name     : libspectre
 Version  : 0.2.8
-Release  : 2
+Release  : 3
 URL      : https://libspectre.freedesktop.org/releases/libspectre-0.2.8.tar.gz
 Source0  : https://libspectre.freedesktop.org/releases/libspectre-0.2.8.tar.gz
 Summary  : libgs wrapper library
