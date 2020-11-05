@@ -4,10 +4,10 @@
 #
 Name     : libspectre
 Version  : 0.2.8
-Release  : 5
+Release  : 6
 URL      : https://libspectre.freedesktop.org/releases/libspectre-0.2.8.tar.gz
 Source0  : https://libspectre.freedesktop.org/releases/libspectre-0.2.8.tar.gz
-Summary  : Small library for rendering Postscript documents
+Summary  : libgs wrapper library
 Group    : Development/Tools
 License  : GPL-2.0
 Requires: libspectre-lib = %{version}-%{release}
@@ -53,35 +53,37 @@ license components for the libspectre package.
 
 %prep
 %setup -q -n libspectre-0.2.8
+cd %{_builddir}/libspectre-0.2.8
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1557079726
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1604610232
+export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %configure --disable-static
 make  %{?_smp_mflags}
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-make VERBOSE=1 V=1 %{?_smp_mflags} check
+make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1557079726
+export SOURCE_DATE_EPOCH=1604610232
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libspectre
-cp COPYING %{buildroot}/usr/share/package-licenses/libspectre/COPYING
+cp %{_builddir}/libspectre-0.2.8/COPYING %{buildroot}/usr/share/package-licenses/libspectre/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
 %make_install
 
 %files
@@ -107,4 +109,4 @@ cp COPYING %{buildroot}/usr/share/package-licenses/libspectre/COPYING
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/libspectre/COPYING
+/usr/share/package-licenses/libspectre/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
