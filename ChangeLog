@@ -1,3 +1,396 @@
+commit 5e1a10e97c29c06756e65a97c7f9e23117eb3646
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Wed May 6 22:07:40 2020 +0200
+
+    release: 0.2.9
+
+ NEWS         | 17 +++++++++++++++++
+ configure.ac |  4 ++--
+ 2 files changed, 19 insertions(+), 2 deletions(-)
+
+commit 8d026495dc62fd4a1f41c95c1eea22589e2b623e
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Sun Apr 26 19:18:04 2020 +0200
+
+    Move spectre_document_load_from_stream to spectre-private.h for now
+    
+    Not ready for the prime time
+
+ libspectre/spectre-document.h | 9 ---------
+ libspectre/spectre-private.h  | 9 +++++++++
+ test/spectre_read_fuzzer.c    | 1 +
+ 3 files changed, 10 insertions(+), 9 deletions(-)
+
+commit 3639f1fe932d8374dd482de4e01457afe3e43a34
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Mon Apr 13 15:51:08 2020 +0200
+
+    Make sure we don't read uninitialized memory from text
+    
+    oss-fuzz/21670
+
+ libspectre/ps.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+commit 465a5c66e5e1ea04a8f70105b1db4ef8051c0428
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Fri Apr 10 19:26:21 2020 +0200
+
+    Initialize varibles if reading fails
+    
+    This way we don't do uninitizlied memory uses later on
+    
+    oss-fuzz/21638
+
+ libspectre/ps.c | 44 ++++++++++++++++++++++++++++++--------------
+ 1 file changed, 30 insertions(+), 14 deletions(-)
+
+commit af1cb4cb719dcb94314bbefc78b59ac426b8fed2
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Wed Apr 8 23:52:43 2020 +0200
+
+    Fix uninitialized memory read on malformed documents
+
+ libspectre/ps.c | 24 +++++++++++++-----------
+ 1 file changed, 13 insertions(+), 11 deletions(-)
+
+commit 48735999ca27fca8f154aa15c078c4576ab64ae5
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Wed Apr 8 23:52:43 2020 +0200
+
+    Fix uninitialized memory read on malformed documents
+
+ libspectre/ps.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit dd7168828cf07971adc8c24bab0f3b6e3d28e0c9
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Wed Apr 8 23:09:45 2020 +0200
+
+    Fix crash on malformed files
+
+ libspectre/ps.c | 14 ++++++++------
+ 1 file changed, 8 insertions(+), 6 deletions(-)
+
+commit f56ba915e3f125130f131cca8a89580e1990c0e2
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Sat Mar 28 18:59:50 2020 +0100
+
+    Fix memory leak
+    
+    oss-fuzz/21240
+
+ libspectre/ps.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+commit c37b6b33d0558fa84936cb7b7f40694282f9c05a
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Sat Mar 28 19:02:54 2020 +0100
+
+    CI: use debian testing while unstable is broken
+
+ .gitlab-ci.yml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 945d39259c0ca1dfd6c594a9d3ed971152313190
+Author: Randy <randy408@protonmail.com>
+Date:   Tue Mar 10 23:48:10 2020 +0100
+
+    fix memory leak in ps.c:650
+
+ libspectre/ps.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit a6329a26cbc8a920cf56531a762bfbf62b3ddc9d
+Author: Randy <randy408@protonmail.com>
+Date:   Tue Mar 10 21:34:26 2020 +0000
+
+    Refactor spectre_document_load_from_data() -> _stream()
+
+ libspectre/spectre-document.c | 47 ++++++++++---------------------------------
+ libspectre/spectre-document.h | 16 +++++++--------
+ test/spectre_read_fuzzer.c    | 17 ++++++++++++++--
+ 3 files changed, 33 insertions(+), 47 deletions(-)
+
+commit 567f72a04dcc5e883e708bd2a3a149e818c1c12f
+Author: Randy <randy408@protonmail.com>
+Date:   Sat Mar 7 10:49:20 2020 +0100
+
+    fix memory leak in ps.c:603
+
+ libspectre/ps.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit ebc0c1ef2e36cb50267689cc44338a17d2895725
+Author: Randy <randy408@protonmail.com>
+Date:   Sat Mar 7 10:11:03 2020 +0100
+
+    fix NULL-dereference in psscan.c:934
+
+ libspectre/ps.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 3bff18aa496ff00b9ddd127c83241a4399850ef0
+Author: Randy <randy408@protonmail.com>
+Date:   Tue Mar 3 08:33:22 2020 +0000
+
+    fix NULL-dereference in psscan()
+    
+    Fixes https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=20986
+
+ libspectre/ps.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 79741b6e1b8abdcb7366d4f35d9bfa041854bfab
+Author: Randy <randy408@protonmail.com>
+Date:   Mon Mar 2 20:58:40 2020 +0000
+
+    Fix memory leak
+    
+    Fixes https://bugs.chromium.org/p/oss-fuzz/issues/detail?id=20283
+
+ libspectre/ps.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+commit 836217c48d2b499f9dda2dcc848cf1dc85a4b18a
+Author: Randy <randy408@protonmail.com>
+Date:   Sat Feb 29 10:47:54 2020 +0100
+
+    ossfuzz: integrate into build, add entrypoint
+
+ test/Makefile.am | 16 +++++++++++++++-
+ test/README      |  9 +++++++++
+ test/fuzz_main.c | 54 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 78 insertions(+), 1 deletion(-)
+
+commit 920c30cf1d4353b28266fc91f88b2ae72e0f5e4f
+Author: Randy <randy408@protonmail.com>
+Date:   Sat Feb 29 10:55:27 2020 +0000
+
+    Add spectre_document_load_from_data(), update fuzz target
+
+ libspectre/spectre-document.c | 53 +++++++++++++++++++++++++++++++++++++------
+ libspectre/spectre-document.h | 13 +++++++++++
+ test/spectre_read_fuzzer.c    | 14 +++---------
+ 3 files changed, 62 insertions(+), 18 deletions(-)
+
+commit ca205d084434915127e64a9d54eafd05cdee872b
+Author: Randy <randy408@protonmail.com>
+Date:   Wed Feb 19 14:33:03 2020 +0100
+
+    ossfuzz: fix coverage build
+
+ test/ossfuzz.sh | 39 +++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 39 insertions(+)
+
+commit 7ae80bff9ee04793a1c0d59e538da7802f81a43d
+Author: Randy <randy408@protonmail.com>
+Date:   Tue Feb 18 21:33:37 2020 +0000
+
+    Refactor code so that psscan() can accept a FILE*, this will enable parsing from fmemopen()'d buffers. I figured this should be merged separately before spectre_document_load_from_data() is added.
+
+ libspectre/ps.c               | 11 +----------
+ libspectre/ps.h               |  1 +
+ libspectre/spectre-document.c | 14 +++++++++++++-
+ test/parser-test.c            |  2 +-
+ 4 files changed, 16 insertions(+), 12 deletions(-)
+
+commit bdc1caaeb22832a0dc1f7420a497cd2382d5edd6
+Author: Randy <randy408@protonmail.com>
+Date:   Thu Feb 13 16:43:36 2020 +0100
+
+    ossfuzz: add dictionary, update build script
+
+ test/ossfuzz.sh      |  7 +++++--
+ test/postscript.dict | 58 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 63 insertions(+), 2 deletions(-)
+
+commit cc41bfe79d2ab2f72a3a11ae1db946f7575e891a
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Sun Jan 5 22:35:10 2020 +0100
+
+    Revert "ossfuzz: keep shared libraries after install"
+    
+    This reverts commit 9b1e58286c7c72baaba55f07bfb42db03240fecf.
+
+ test/ossfuzz.sh | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 9b1e58286c7c72baaba55f07bfb42db03240fecf
+Author: Randy <randy408@protonmail.com>
+Date:   Wed Jan 1 23:15:59 2020 +0100
+
+    ossfuzz: keep shared libraries after install
+
+ test/ossfuzz.sh | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 1a367871cbe7dab1a70be0779ba1b0306e41e760
+Author: Randy <randy408@protonmail.com>
+Date:   Sun Dec 8 20:04:20 2019 +0100
+
+    fix leak in spectre_device_render()
+
+ libspectre/spectre-device.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+commit ceeeec8ee480c9cce066c0921665ef647bd5c135
+Author: Randy <randy408@protonmail.com>
+Date:   Tue Nov 26 16:07:07 2019 +0100
+
+    update ossfuzz.sh
+
+ test/ossfuzz.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit a75690875044349b24c521db87db8065da294d16
+Author: Randy <randy408@protonmail.com>
+Date:   Tue Nov 26 15:48:53 2019 +0100
+
+    update fuzz target
+
+ test/spectre_read_fuzzer.c  | 49 +++++++++++++++++++++++++++++++++++++++++++++
+ test/spectre_read_fuzzer.cc | 46 ------------------------------------------
+ 2 files changed, 49 insertions(+), 46 deletions(-)
+
+commit de4eaa73e94516ba6c8ddda364cf2f59b4eb28ca
+Author: Randy <randy408@protonmail.com>
+Date:   Sun Nov 24 11:42:17 2019 +0100
+
+    fix indentation
+
+ test/spectre_read_fuzzer.cc | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+commit fc996641b011adbf21e4205a32ac02f6543f5fd4
+Author: Randy <randy408@protonmail.com>
+Date:   Wed Nov 20 12:36:56 2019 +0100
+
+    add build script, fuzz target
+
+ test/ossfuzz.sh             | 20 ++++++++++++++++++++
+ test/spectre_read_fuzzer.cc | 46 +++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 66 insertions(+)
+
+commit 90000c9d5c1d0928e02da0a799bb81676589e073
+Author: Christian Persch <chpe@src.gnome.org>
+Date:   Sat Oct 20 00:17:47 2018 +0200
+
+    spectre-gs: Remove support for old ghostscript
+    
+    Now that we require a recent ghostscript, we can remove
+    the support for older versions.
+
+ libspectre/spectre-device.c |  9 +++------
+ libspectre/spectre-gs.c     | 21 +++++----------------
+ 2 files changed, 8 insertions(+), 22 deletions(-)
+
+commit 75e154f89565af475ef4c9c9a01a805eadb9405e
+Author: Christian Persch <chpe@src.gnome.org>
+Date:   Sat Oct 20 00:17:47 2018 +0200
+
+    spectre-gs: Enforce minimum ghostscript version
+    
+    Ghostscript versions before 9.24 had a critical vulnerability
+    allowing to escape -dSAFER; refuse to do anything if the version
+    is less than 9.24.
+    
+    https://gitlab.freedesktop.org/libspectre/libspectre/issues/25
+
+ configure.ac            |  2 +-
+ libspectre/spectre-gs.c | 12 +++++++++++-
+ 2 files changed, 12 insertions(+), 2 deletions(-)
+
+commit 48696f7e724923564dd6c8908afdb7c9d4893f02
+Author: Albert Astals Cid <albert.astals.cid@kdab.com>
+Date:   Fri Oct 19 18:03:51 2018 +0200
+
+    Make clang happy
+    
+    ps.c:1875:9: warning: promoted type 'int' of K&R function parameter is not compatible with the parameter type 'char' declared in a previous prototype [-Wknr-promoted-parameter]
+       char charP;
+            ^
+    ps.c:197:88: note: previous declaration is here
+    static char    *readlineuntil PT((FileData, long, char **, long *, unsigned int *, char));
+                                                                                           ^
+    ps.c:2212:13: warning: promoted type 'int' of K&R function parameter is not compatible with the parameter type 'unsigned short' declared in a previous prototype [-Wknr-promoted-parameter]
+        PS_WORD val;
+                ^
+    ps.c:206:48: note: previous declaration is here
+    static PS_WORD         reorder_word PT((PS_WORD));
+
+ libspectre/ps.c | 11 ++---------
+ 1 file changed, 2 insertions(+), 9 deletions(-)
+
+commit 92a478f926ded10dc15726e31998d041d6ff7794
+Author: Christian Persch <chpe@src.gnome.org>
+Date:   Fri Oct 19 21:07:36 2018 +0200
+
+    Hide internal symbols
+    
+    Use hidden visibility by default and make only the public API
+    symbols visible.
+    
+    https://gitlab.freedesktop.org/libspectre/libspectre/issues/30
+
+ configure.ac                        | 33 +++++++++++++++++++++++++++++++++
+ libspectre/Makefile.am              |  3 +++
+ libspectre/spectre-document.h       | 20 ++++++++++++++++++++
+ libspectre/spectre-exporter.h       |  6 +++++-
+ libspectre/spectre-macros.h         |  8 ++++++++
+ libspectre/spectre-page.h           |  8 ++++++++
+ libspectre/spectre-render-context.h | 14 ++++++++++++++
+ libspectre/spectre-status.h         |  1 +
+ test/Makefile.am                    | 12 ++++++++++--
+ 9 files changed, 102 insertions(+), 3 deletions(-)
+
+commit 17c72f0560bf079cbd0e6df5dd3445cb8f05660a
+Author: Albert Astals Cid <albert.astals.cid@kdab.com>
+Date:   Fri Oct 19 17:41:01 2018 +0200
+
+    Make gcc happy about switch fallthrough
+
+ libspectre/ps.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 818ff44e1e1e665efeeccc2a58c6453949368638
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Sat Oct 13 00:39:28 2018 +0200
+
+    Fix crash with malformed document
+    
+    Closes issue #14
+
+ libspectre/ps.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit f4f8cb65e01e62c86354a6697307f9549136a66e
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Sat Oct 13 00:08:49 2018 +0200
+
+    Add basic CI
+
+ .gitlab-ci.yml | 38 ++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 38 insertions(+)
+
+commit f88d2c259242936bbc3c74bf43107626c0f5ad61
+Author: Caolán McNamara <caolanm@redhat.com>
+Date:   Fri Jan 13 09:56:14 2017 +0000
+
+    state what lib is printing the error
+    
+    and where it originally came from
+    
+    so its clear where
+    
+    "undefined -21" came from in cases like
+    https://bugzilla.gnome.org/show_bug.cgi?id=678500
+    
+    https://bugs.freedesktop.org/show_bug.cgi?id=99395
+
+ libspectre/spectre-gs.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
 commit 1cdaa3fa1da8e0b3b1d2df8cfa5027d2a7b24418
 Author: Carlos Garcia Campos <carlosgc@gnome.org>
 Date:   Sat Jul 2 10:07:09 2016 +0200
@@ -977,10 +1370,9 @@ Date:   Sat Dec 15 18:26:28 2007 +0100
 
     Use Doxyfile.in instead of Doxyfile and update it
 
- Doxyfile     | 244 ----------------------------------------------------------
- Doxyfile.in  | 247 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
- configure.ac |   4 +
- 3 files changed, 251 insertions(+), 244 deletions(-)
+ Doxyfile => Doxyfile.in | 29 ++++++++++++++++-------------
+ configure.ac            |  4 ++++
+ 2 files changed, 20 insertions(+), 13 deletions(-)
 
 commit a45cf18b80c044f68061d54837ca361131e8a070
 Author: Albert Astals Cid <aacid@kde.org>
