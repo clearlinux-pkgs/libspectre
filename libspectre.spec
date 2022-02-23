@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x3A6A4DB839EAA6D7 (aacid@kde.org)
 #
 Name     : libspectre
-Version  : 0.2.9
-Release  : 7
-URL      : https://libspectre.freedesktop.org/releases/libspectre-0.2.9.tar.gz
-Source0  : https://libspectre.freedesktop.org/releases/libspectre-0.2.9.tar.gz
-Source1  : https://libspectre.freedesktop.org/releases/libspectre-0.2.9.tar.gz.sig
+Version  : 0.2.10
+Release  : 8
+URL      : https://libspectre.freedesktop.org/releases/libspectre-0.2.10.tar.gz
+Source0  : https://libspectre.freedesktop.org/releases/libspectre-0.2.10.tar.gz
+Source1  : https://libspectre.freedesktop.org/releases/libspectre-0.2.10.tar.gz.sig
 Summary  : libgs wrapper library
 Group    : Development/Tools
 License  : GPL-2.0
@@ -55,23 +55,23 @@ license components for the libspectre package.
 
 
 %prep
-%setup -q -n libspectre-0.2.9
-cd %{_builddir}/libspectre-0.2.9
+%setup -q -n libspectre-0.2.10
+cd %{_builddir}/libspectre-0.2.10
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1605724819
+export SOURCE_DATE_EPOCH=1645634526
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
-export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
 %configure --disable-static
 make  %{?_smp_mflags}
 
@@ -83,10 +83,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1605724819
+export SOURCE_DATE_EPOCH=1645634526
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libspectre
-cp %{_builddir}/libspectre-0.2.9/COPYING %{buildroot}/usr/share/package-licenses/libspectre/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
+cp %{_builddir}/libspectre-0.2.10/COPYING %{buildroot}/usr/share/package-licenses/libspectre/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
 %make_install
 
 %files
@@ -108,7 +108,7 @@ cp %{_builddir}/libspectre-0.2.9/COPYING %{buildroot}/usr/share/package-licenses
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libspectre.so.1
-/usr/lib64/libspectre.so.1.1.9
+/usr/lib64/libspectre.so.1.1.10
 
 %files license
 %defattr(0644,root,root,0755)

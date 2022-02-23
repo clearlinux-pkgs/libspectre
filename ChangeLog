@@ -1,3 +1,63 @@
+commit 8d0515492504f5e4cf3dd9ddf3e89360f0a67e91
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Sat Feb 12 11:37:35 2022 +0100
+
+    release: 0.2.10
+
+ NEWS         | 11 +++++++++++
+ configure.ac |  4 ++--
+ 2 files changed, 13 insertions(+), 2 deletions(-)
+
+commit 66299f05ed419b5b6ee5495f8ee5e8d670bfd1c4
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Fri Sep 25 01:47:29 2020 +0200
+
+    Use the new api to pass the callbacks
+    
+    Needs ghostscript >= 9.53
+
+ .gitlab-ci.yml              |  6 +++---
+ configure.ac                |  4 ++--
+ libspectre/spectre-device.c | 47 +++++++++++++++++++++++++++------------------
+ libspectre/spectre-gs.c     | 20 ++++---------------
+ libspectre/spectre-gs.h     |  6 ++++--
+ 5 files changed, 41 insertions(+), 42 deletions(-)
+
+commit 4d34d6cfe9bd8fc7b8355a39502374d9d6426ed0
+Author: Marek Kasik <mkasik@redhat.com>
+Date:   Mon Nov 29 16:27:57 2021 +0100
+
+    Set alignment for rendering to default
+    
+    Previous aligning to 32 bytes rendered EPS in wrong way (not always but often).
+    Setting default alignment which aligns to size of pointer fixes this issue.
+    
+    The commit which set it to the 32 was talking about alignment of 4 bytes so I guess
+    that there were bits interchanged with bytes.
+    
+    Fixes #44
+
+ libspectre/spectre-device.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 6928e8933e8b6c98c0590985866cc12e7321f491
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Sat Dec 26 12:21:22 2020 +0100
+
+    Free the previous user_image in case spectre_presize is called multiple times
+
+ libspectre/spectre-device.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 155777e316aa1bbc0f3be9ed7a6e7a9b76b58968
+Author: Randy <randy408@protonmail.com>
+Date:   Thu May 14 08:52:41 2020 +0200
+
+    remove version suffix from ghostscript directory
+
+ test/ossfuzz.sh | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
 commit 5e1a10e97c29c06756e65a97c7f9e23117eb3646
 Author: Albert Astals Cid <aacid@kde.org>
 Date:   Wed May 6 22:07:40 2020 +0200
