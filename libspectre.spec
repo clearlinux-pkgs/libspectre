@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x3A6A4DB839EAA6D7 (aacid@kde.org)
 #
 Name     : libspectre
-Version  : 0.2.10
-Release  : 8
-URL      : https://libspectre.freedesktop.org/releases/libspectre-0.2.10.tar.gz
-Source0  : https://libspectre.freedesktop.org/releases/libspectre-0.2.10.tar.gz
-Source1  : https://libspectre.freedesktop.org/releases/libspectre-0.2.10.tar.gz.sig
+Version  : 0.2.11
+Release  : 9
+URL      : https://libspectre.freedesktop.org/releases/libspectre-0.2.11.tar.gz
+Source0  : https://libspectre.freedesktop.org/releases/libspectre-0.2.11.tar.gz
+Source1  : https://libspectre.freedesktop.org/releases/libspectre-0.2.11.tar.gz.sig
 Summary  : libgs wrapper library
 Group    : Development/Tools
 License  : GPL-2.0
@@ -55,15 +55,15 @@ license components for the libspectre package.
 
 
 %prep
-%setup -q -n libspectre-0.2.10
-cd %{_builddir}/libspectre-0.2.10
+%setup -q -n libspectre-0.2.11
+cd %{_builddir}/libspectre-0.2.11
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1645634526
+export SOURCE_DATE_EPOCH=1672183068
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -83,10 +83,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1645634526
+export SOURCE_DATE_EPOCH=1672183068
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libspectre
-cp %{_builddir}/libspectre-0.2.10/COPYING %{buildroot}/usr/share/package-licenses/libspectre/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
+cp %{_builddir}/libspectre-%{version}/COPYING %{buildroot}/usr/share/package-licenses/libspectre/06877624ea5c77efe3b7e39b0f909eda6e25a4ec
 %make_install
 
 %files
@@ -108,7 +108,7 @@ cp %{_builddir}/libspectre-0.2.10/COPYING %{buildroot}/usr/share/package-license
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/libspectre.so.1
-/usr/lib64/libspectre.so.1.1.10
+/usr/lib64/libspectre.so.1.1.11
 
 %files license
 %defattr(0644,root,root,0755)
