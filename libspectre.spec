@@ -6,7 +6,7 @@
 #
 Name     : libspectre
 Version  : 0.2.12
-Release  : 10
+Release  : 11
 URL      : https://libspectre.freedesktop.org/releases/libspectre-0.2.12.tar.gz
 Source0  : https://libspectre.freedesktop.org/releases/libspectre-0.2.12.tar.gz
 Source1  : https://libspectre.freedesktop.org/releases/libspectre-0.2.12.tar.gz.sig
@@ -66,7 +66,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1673547574
+export SOURCE_DATE_EPOCH=1676507759
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -86,7 +86,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1673547574
+export SOURCE_DATE_EPOCH=1676507759
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/libspectre
 cp %{_builddir}/libspectre-%{version}/COPYING %{buildroot}/usr/share/package-licenses/libspectre/06877624ea5c77efe3b7e39b0f909eda6e25a4ec || :
