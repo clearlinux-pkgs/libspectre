@@ -6,7 +6,7 @@
 #
 Name     : libspectre
 Version  : 0.2.12
-Release  : 12
+Release  : 13
 URL      : https://libspectre.freedesktop.org/releases/libspectre-0.2.12.tar.gz
 Source0  : https://libspectre.freedesktop.org/releases/libspectre-0.2.12.tar.gz
 Source1  : https://libspectre.freedesktop.org/releases/libspectre-0.2.12.tar.gz.sig
