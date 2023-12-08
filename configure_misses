@@ -1,3 +1,6 @@
 Configure miss: _vscprintf
+Configure miss: _vscprintf
 Configure miss: whether va_lists can be copied by value
+Configure miss: whether va_lists can be copied by value
+Configure miss: x86_64-generic-linux-gnu-file
 Configure miss: x86_64-generic-linux-gnu-file
